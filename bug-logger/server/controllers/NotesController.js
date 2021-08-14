@@ -20,4 +20,13 @@ export class NotesController extends BaseController {
       next(error)
     }
   }
+
+  async destroy(req, res, next) {
+    try {
+      const note = await notesService.destroy(req.params.id, req.userInfo.id)
+      res.send({ message: 'Note deleted.' })
+    } catch (error) {
+      next(error)
+    }
+  }
 }
