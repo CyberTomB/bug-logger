@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { bugsService } from '../services/BugsService'
+import { notesService } from '../services/NotesService'
 
 export class BugsController extends BaseController {
   constructor() {
@@ -8,6 +9,7 @@ export class BugsController extends BaseController {
     this.router
       .get('', this.getAll)
       .get('/:id', this.getOneById)
+      .get('/:id/notes', this.getAllNotesByBugId)
       // .get('/:id', this.getAllNotesByBugId)
     // NOTE: Routes require auth
       .use(Auth0Provider.getAuthorizedUserInfo)
@@ -34,14 +36,14 @@ export class BugsController extends BaseController {
     }
   }
 
-  // async getAllNotesByBugId(req, res, next) {
-  //   try {
-  //     const notes = await notesService.getAllByBugId(req.params.id)
-  //     res.send(notes)
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+  async getAllNotesByBugId(req, res, next) {
+    try {
+      const notes = await notesService.getAllByBugId(req.params.id)
+      res.send(notes)
+    } catch (error) {
+      next(error)
+    }
+  }
 
   async create(req, res, next) {
     try {
