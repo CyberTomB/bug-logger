@@ -1,13 +1,46 @@
 <template>
-  <h2>{{ bug.title }}</h2>
+  <div class="card">
+    <div class="row py-1" :class="state.oddIndex ? 'bg-grey' : 'bg-light'">
+      <div class="col-3">
+        {{ bug.title }}
+      </div>
+      <div class="col-3">
+        {{ bug.creator.name }}
+      </div>
+      <div class="col">
+        {{ bug.updatedAt }}
+      </div>
+      <div class="col-3">
+        <i class="mx-2 mdi btn" :class="[state.isClosed ? state.closedClass : state.openClass]" @click="changeOpen" :title="state.isOpen? 'Open' : 'Closed'">
+        </i>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
 export default {
   props: {
     bug: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  setup(props) {
+    const state = reactive({
+      isClosed: props.bug.closed,
+      openClass: 'btn-warning mdi-progress-check',
+      closedClass: 'btn-success mdi-checkbox-marked-circle',
+      oddIndex: computed(() => !!(props.index % 2))
+    })
+    return {
+      state
     }
   }
 }
