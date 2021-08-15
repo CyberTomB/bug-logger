@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <router-link :to="{name: 'Bug Details', params: {bugId: bug.id}}" class="card">
     <div class="row py-1" :class="state.oddIndex ? 'bg-grey' : 'bg-light'">
       <div class="col-3">
         {{ bug.title }}
@@ -15,7 +15,7 @@
         </i>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

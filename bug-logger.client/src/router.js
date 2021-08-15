@@ -28,7 +28,7 @@ const routes = [
     component: loadPage('BugsListPage')
   },
   {
-    path: '/bugs/:id',
+    path: '/bugs/:bugId',
     name: 'Bug Details',
     component: loadPage('BugDetailsPage'),
     children: [{
