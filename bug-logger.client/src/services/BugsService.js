@@ -50,6 +50,21 @@ class BugsService {
       Pop.toast('You cannot edit this bug!')
     }
   }
+
+  async close(bug) {
+    if (AppState.user.isAuthenticated && AppState.account.id === bug.creator.id) {
+      try {
+        const res = await api.delete('api/bugs/' + bug.id)
+        console.log(res.data)
+        AppState.chosenBug = res.data
+        Pop.toast('Bug closed.', 'success')
+      } catch (error) {
+        Pop.toast(error)
+      }
+    } else {
+      Pop.toast('You cannot close this bug!')
+    }
+  }
 }
 
 export const bugsService = new BugsService()

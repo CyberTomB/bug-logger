@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <h2>
-        {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" />
+        {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug" />
         <i class="mdi mdi-pencil btn btn-yellow float-right" v-if="!bug.closed" @click="edit">EDIT</i>
       </h2>
     </div>
@@ -37,6 +37,7 @@
 <script>
 import { computed, reactive } from '@vue/runtime-core'
 import { bugsService } from '../services/BugsService'
+import Pop from '../utils/Notifier'
 export default {
   props: {
     bug: {
@@ -56,6 +57,13 @@ export default {
       edit() {
         if (!props.bug.closed) {
           state.editOn = !state.editOn
+        }
+      },
+      async closeBug() {
+        if (!props.bug.closed) {
+          if (await Pop.confirm('Are you sure about that?')) {
+            await bugsService.close(props.bug)
+          }
         }
       },
       async submitEdit() {

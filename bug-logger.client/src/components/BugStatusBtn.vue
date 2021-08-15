@@ -1,5 +1,5 @@
 <template>
-  <i class="mx-2 mdi btn" :class="[bugStatus ? state.closedClass : state.openClass]" :title="bugStatus? 'Open' : 'Closed'">
+  <i class="mx-2 mdi btn" :class="[bugStatus ? state.closedClass : state.openClass]" :title="bugStatus? 'Closed' : 'Open'" @click="$emit('close')">
   </i>
 </template>
 

@@ -10,10 +10,10 @@
 * [X] The BugDetails displays all the details of a bug, its status and notes for that bug
 * [X] Notes can be added and removed from a bug in the BugDetails page
 * [X] When notes are created a reload is not required to render the note to the page
-* [] Bugs can be closed from the BugDetails page
+* [X] Bugs can be closed from the BugDetails page
 * [X] Bugs and Notes show their authors name and image
 * [X] Users can only modify data they created
-* [] A Bug can be edited if it is not closed & cannot be edited after it is closed
+* [X] A Bug can be edited if it is not closed & cannot be edited after it is closed
 * [X] The Client and Server enforce all above independently
 * [X] Changes to data do not require refresh to render
 * [X] Api passes all Postman Tests

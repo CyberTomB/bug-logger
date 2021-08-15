@@ -40,7 +40,7 @@ class BugsService {
       throw new Forbidden('You did not create this bug and cannot close it!')
     }
     reqBug.closed = true
-    const afterUpdate = await dbContext.Bug.findByIdAndUpdate(reqBug.id, reqBug, { new: true, runValidators: true })
+    const afterUpdate = await dbContext.Bug.findByIdAndUpdate(reqBug.id, reqBug, { new: true, runValidators: true }).populate('creator')
     return afterUpdate
   }
 }
