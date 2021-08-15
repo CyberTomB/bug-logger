@@ -20,7 +20,7 @@
         <h3 class="col-3">
           Created By
         </h3>
-        <h3 class="col-3" @click="updateOrder">
+        <h3 class="col-3" @click="updateOrder()">
           Last Updated
         </h3>
         <h3 class="col" @click="openFilter">
@@ -35,7 +35,7 @@
         />
       </div>
       <div v-else>
-        <BugListCard v-for="(bug, i) in bugs" :key="bug.id" :bug="bug" :index="i" />
+        <BugListCard v-for="(bug, i) in bugsNewestFirst" :key="bug.id" :bug="bug" :index="i" />
       </div>
     </div>
   </div>
@@ -61,6 +61,22 @@ export default {
     })
     return {
       state,
+      // REVIEW: How to change sort order w/o sacrificing the computed factor
+      bugs: computed(() => {
+        if (state.newestBugsFirst) {
+          AppState.bugs.sort(function(x, y) {
+            const xDate = new Date(x.updatedAt)
+            const yDate = new Date(y.updatedAt)
+            return yDate - xDate
+          })
+        } else {
+          AppState.bugs.sort(function(x, y) {
+            const xDate = new Date(x.updatedAt)
+            const yDate = new Date(y.updatedAt)
+            return xDate - yDate
+          })
+        }
+      }),
       bugsNewestFirst: computed(() => AppState.bugs.sort(function(x, y) {
         const xDate = new Date(x.updatedAt)
         const yDate = new Date(y.updatedAt)
