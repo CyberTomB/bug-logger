@@ -1,5 +1,9 @@
 <template>
-  <BugDetailCard :bug="bug" />
+  <div class="row justify-content-around">
+    <div class="col-md-10">
+      <BugDetailCard :bug="bug" />
+    </div>
+  </div>
 </template>
 
 <script>
