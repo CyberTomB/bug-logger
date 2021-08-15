@@ -13,6 +13,16 @@ class BugsService {
       Pop.toast(error, 'error')
     }
   }
+
+  async getOneById(id) {
+    try {
+      const res = await api.get('api/bugs/' + id)
+      logger.log(res.data)
+      AppState.chosenBug = res.data
+    } catch (error) {
+      Pop.toast(error, 'error')
+    }
+  }
 }
 
 export const bugsService = new BugsService()
