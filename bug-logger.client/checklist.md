@@ -7,11 +7,11 @@
 * [X] Styling Indication on bugs page that bug is closed (color, strike-through, etc.)
 * [] Creating a new Bug automatically navigates to the BugDetails page
 * [X] The BugDetails route uses a route parameter and still renders the bug after refresh
-* [] The BugDetails displays all the details of a bug, its status and notes for that bug
+* [X] The BugDetails displays all the details of a bug, its status and notes for that bug
 * [] Notes can be added and removed from a bug in the BugDetails page
 * [] When notes are created a reload is not required to render the note to the page
 * [] Bugs can be closed from the BugDetails page
-* [] Bugs and Notes show their authors name and image
+* [X] Bugs and Notes show their authors name and image
 * [] Users can only modify data they created
 * [] A Bug can be edited if it is not closed & cannot be edited after it is closed
 * [] The Client and Server enforce all above independently

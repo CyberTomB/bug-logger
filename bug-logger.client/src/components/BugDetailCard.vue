@@ -7,6 +7,7 @@
       <p>{{ bug.description }}</p>
     </div>
     <div class="card-footer">
+      <img :src="bug.creator.picture" :alt="bug.creator.name">
       {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
     </div>
   </div>

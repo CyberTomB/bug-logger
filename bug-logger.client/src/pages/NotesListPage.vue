@@ -1,8 +1,7 @@
 <template>
   <h1>Notes List</h1>
-  <p v-for="note in notes" :key="note.id">
-    {{ note.body }}
-  </p>
+  <NoteCard v-for="note in notes" :key="note.id" :note="note">
+  </NoteCard>
 </template>
 
 <script>
