@@ -34,6 +34,22 @@ class BugsService {
       Pop.toast(error, 'error')
     }
   }
+
+  async edit(newBug, oldBug) {
+    if (oldBug.closed) {
+      Pop.toast('This bug is closed!')
+    }
+    if (AppState.user.isAuthenticated && AppState.account.id === oldBug.creator.id) {
+      try {
+        const res = await api.put('api/bugs/' + oldBug.id, newBug)
+        Pop.toast('Bug edited', 'success')
+      } catch (error) {
+        Pop.toast(error)
+      }
+    } else {
+      Pop.toast('You cannot edit this bug!')
+    }
+  }
 }
 
 export const bugsService = new BugsService()

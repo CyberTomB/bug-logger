@@ -11,8 +11,7 @@
         {{ lastUpdated }}
       </div>
       <div class="col-3">
-        <i class="mx-2 mdi btn" :class="[state.isClosed ? state.closedClass : state.openClass]" @click="changeOpen" :title="state.isOpen? 'Open' : 'Closed'">
-        </i>
+        <BugStatusBtn :bug-status="bug.closed" />
       </div>
     </div>
   </router-link>
@@ -34,9 +33,9 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      isClosed: props.bug.closed,
-      openClass: 'btn-warning mdi-progress-check',
-      closedClass: 'btn-success mdi-checkbox-marked-circle',
+      // isClosed: props.bug.closed,
+      // openClass: 'btn-warning mdi-progress-check',
+      // closedClass: 'btn-success mdi-checkbox-marked-circle',
       oddIndex: computed(() => !!(props.index % 2))
     })
     return {

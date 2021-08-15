@@ -1,10 +1,31 @@
 <template>
   <div class="card">
     <div class="card-header">
-      {{ bug.title }}
+      <h2>
+        {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" />
+        <i class="mdi mdi-pencil btn btn-yellow float-right" v-if="!bug.closed" @click="edit">EDIT</i>
+      </h2>
     </div>
     <div class="card-body">
-      <p>{{ bug.description }}</p>
+      <div v-if="state.editOn">
+        <form @submit.prevent="submitEdit">
+          <div class="input-group">
+            <textarea name="note-body"
+                      id="bug-description-form"
+                      cols="100"
+                      rows="5"
+                      class="col-10"
+                      v-model="state.editedBug.description"
+            ></textarea>
+            <button type="submit" class="btn btn-secondary col-2">
+              SUBMIT
+            </button>
+          </div>
+        </form>
+      </div>
+      <div v-else>
+        <p>{{ state.editedBug.description }}</p>
+      </div>
     </div>
     <div class="card-footer">
       <img :src="bug.creator.picture" :alt="bug.creator.name">
@@ -14,7 +35,8 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core'
+import { computed, reactive } from '@vue/runtime-core'
+import { bugsService } from '../services/BugsService'
 export default {
   props: {
     bug: {
@@ -23,7 +45,23 @@ export default {
     }
   },
   setup(props) {
+    const state = reactive({
+      editOn: false,
+      editedBug: {
+        description: props.bug.description
+      }
+    })
     return {
+      state,
+      edit() {
+        if (!props.bug.closed) {
+          state.editOn = !state.editOn
+        }
+      },
+      async submitEdit() {
+        state.editOn = !state.editOn
+        await bugsService.edit(state.editedBug, props.bug)
+      },
       created: computed(() => {
         const d = new Date(props.bug.createdAt)
         return new Intl.DateTimeFormat('en-US').format(d)
@@ -36,3 +74,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.btn-yellow{
+  background-color: rgb(220, 224, 7);
+}
+</style>
