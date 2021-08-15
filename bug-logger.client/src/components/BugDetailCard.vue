@@ -7,7 +7,7 @@
       <p>{{ bug.description }}</p>
     </div>
     <div class="card-footer">
-      {{ bug.creator.name }} | Created: {{ dates.created }} | Last Update: {{ dates.lastUpdated }}
+      {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
     </div>
   </div>
 </template>
@@ -23,16 +23,14 @@ export default {
   },
   setup(props) {
     return {
-      dates: {
-        created: computed(() => {
-          const d = new Date(props.bug.createdAt)
-          return new Intl.DateTimeFormat('en-US').format(d)
-        }),
-        lastUpdated: computed(() => {
-          const d = new Date(props.bug.updatedAt)
-          return new Intl.DateTimeFormat('en-US').format(d)
-        })
-      }
+      created: computed(() => {
+        const d = new Date(props.bug.createdAt)
+        return new Intl.DateTimeFormat('en-US').format(d)
+      }),
+      lastUpdated: computed(() => {
+        const d = new Date(props.bug.updatedAt)
+        return new Intl.DateTimeFormat('en-US').format(d)
+      })
     }
   }
 }

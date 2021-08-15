@@ -3,7 +3,9 @@
     <Navbar />
   </header>
   <main>
-    <router-view class="container-fluid" />
+    <div class="container-fluid">
+      <router-view />
+    </div>
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
