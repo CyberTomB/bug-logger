@@ -12,7 +12,7 @@
           Last Updated
         </h3>
         <h3 class="col" @click="openFilter">
-          {{ state.openBugsOnly ? 'All Bugs' : 'Open Only' }}
+          {{ state.openBugsOnly ? 'Open Only' : 'All Bugs' }}
         </h3>
       </div>
       <div v-if="state.openBugsOnly">

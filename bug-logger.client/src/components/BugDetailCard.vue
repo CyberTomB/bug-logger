@@ -7,17 +7,32 @@
       <p>{{ bug.description }}</p>
     </div>
     <div class="card-footer">
-      {{ bug.creator.name }} | Created: {{ bug.createdAt }} | Last Update: {{ bug.updatedAt }}
+      {{ bug.creator.name }} | Created: {{ dates.created }} | Last Update: {{ dates.lastUpdated }}
     </div>
   </div>
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
 export default {
   props: {
     bug: {
       type: Object,
       required: true
+    }
+  },
+  setup(props) {
+    return {
+      dates: {
+        created: computed(() => {
+          const d = new Date(props.bug.createdAt)
+          return new Intl.DateTimeFormat('en-US').format(d)
+        }),
+        lastUpdated: computed(() => {
+          const d = new Date(props.bug.updatedAt)
+          return new Intl.DateTimeFormat('en-US').format(d)
+        })
+      }
     }
   }
 }

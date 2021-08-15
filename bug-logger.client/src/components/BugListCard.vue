@@ -8,7 +8,7 @@
         {{ bug.creator.name }}
       </div>
       <div class="col">
-        {{ bug.updatedAt }}
+        {{ lastUpdated }}
       </div>
       <div class="col-3">
         <i class="mx-2 mdi btn" :class="[state.isClosed ? state.closedClass : state.openClass]" @click="changeOpen" :title="state.isOpen? 'Open' : 'Closed'">
@@ -40,7 +40,11 @@ export default {
       oddIndex: computed(() => !!(props.index % 2))
     })
     return {
-      state
+      state,
+      lastUpdated: computed(() => {
+        const d = new Date(props.bug.updatedAt)
+        return new Intl.DateTimeFormat('en-US').format(d)
+      })
     }
   }
 }
