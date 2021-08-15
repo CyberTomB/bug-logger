@@ -1,11 +1,11 @@
 * [X] Users Can Register, Login, and Logout
 * [X] At least 2 supported front end routes, Bugs and BugDetails
 * [X] The BugsPage shows all bugs (pagination allowed)
-* [] Bugs can be created
+* [X] Bugs can be created
 * [X] The Bugs can be sorted or filtered by their status
 * [X] Bugs display last modified date in a normalized format (MM-DD-YYYY)
 * [X] Styling Indication on bugs page that bug is closed (color, strike-through, etc.)
-* [] Creating a new Bug automatically navigates to the BugDetails page
+* [X] Creating a new Bug automatically navigates to the BugDetails page
 * [X] The BugDetails route uses a route parameter and still renders the bug after refresh
 * [X] The BugDetails displays all the details of a bug, its status and notes for that bug
 * [] Notes can be added and removed from a bug in the BugDetails page
