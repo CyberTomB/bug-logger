@@ -4,7 +4,7 @@
       <h2 class="bug-title">
         <!-- TODO: Close and Edit should be disabled for non-creator -->
         {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug" />
-        <i class="mdi mdi-pencil btn btn-yellow float-md-right" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
+        <i class="mdi mdi-pencil btn btn-yellow float-md-right" title="Edit" aria-label="Edit" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
       </h2>
     </div>
     <div class="card-body">
@@ -19,7 +19,7 @@
                       class="col-10"
                       v-model="state.editedBug.description"
             ></textarea>
-            <button type="submit" class="btn btn-secondary col-2">
+            <button type="submit" class="btn btn-secondary col-2" aria-label="Submit" title="Submit">
               SUBMIT
             </button>
           </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="card-footer text-muted align-items-end d-flex">
       <img :src="bug.creator.picture" :alt="bug.creator.name" :title="bug.creator.name" class="creator-picture img-fluid mr-3">
-      Submitted bya: {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
+      Submitted by: {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
     </div>
   </div>
 </template>

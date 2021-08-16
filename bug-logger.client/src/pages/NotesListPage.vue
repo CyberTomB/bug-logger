@@ -5,7 +5,7 @@
         <small>Add Note:</small>
         <div class="input-group">
           <textarea name="body" class="form-control" aria-label="new-post" v-model="state.newNote.body"></textarea>
-          <button class="btn btn-secondary" type="submit">
+          <button class="btn btn-secondary" type="submit" aria-label="Submit" title="Submit">
             SUBMIT
           </button>
         </div>

@@ -8,7 +8,7 @@
                 class="col-10"
                 v-model="state.description"
       ></textarea>
-      <button type="submit" class="btn btn-secondary col-2">
+      <button type="submit" class="btn btn-secondary col-2" aria-label="Submit" title="Submit">
         SUBMIT
       </button>
     </div>

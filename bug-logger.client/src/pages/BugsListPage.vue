@@ -13,6 +13,7 @@
                   data-toggle="modal"
                   data-target="#createBugReport"
                   title="Create Bug Report"
+                  aria-label="Create Bug Report"
                   id="create-bug-btn"
           >
             Create Bug Report

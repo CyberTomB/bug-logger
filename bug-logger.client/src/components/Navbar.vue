@@ -15,6 +15,7 @@
       aria-controls="navbarText"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      title="Toggle navigation"
     >
       <span class="navbar-toggler-icon" />
     </button>
@@ -31,6 +32,8 @@
           class="btn btn-outline-primary text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
+          aria-label="Login"
+          title="Login"
         >
           Login
         </button>

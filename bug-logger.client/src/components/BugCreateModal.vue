@@ -13,7 +13,7 @@
           <h5 class="modal-title" id="bugReport">
             Bug Report:
           </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" title="Close">
               Close
             </button>
             <button type="submit" class="btn btn-primary">
