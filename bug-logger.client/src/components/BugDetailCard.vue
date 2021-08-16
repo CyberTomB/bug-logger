@@ -9,6 +9,7 @@
     </div>
     <div class="card-body">
       <div v-if="state.editOn">
+        <!-- <EditForm :populate="state.editedBug" /> -->
         <form @submit.prevent="submitEdit">
           <div class="input-group">
             <textarea name="note-body"
@@ -16,7 +17,7 @@
                       cols="100"
                       rows="5"
                       class="col-10"
-                      v-model="state.editedBug.newDescription"
+                      v-model="state.editedBug.description"
             ></textarea>
             <button type="submit" class="btn btn-secondary col-2">
               SUBMIT
@@ -52,8 +53,8 @@ export default {
     const state = reactive({
       editOn: false,
       editedBug: {
-        description: computed(() => AppState.chosenBug.description),
-        newDescription: ''
+        oldDescription: computed(() => AppState.chosenBug.description),
+        description: ''
       }
     })
     return {
@@ -62,6 +63,7 @@ export default {
       edit() {
         if (!props.bug.closed) {
           state.editOn = !state.editOn
+          state.editedBug.description = state.editedBug.oldDescription
         }
       },
       async closeBug() {

@@ -27,7 +27,7 @@ class BugsService {
     if (bug.creatorId.toString() !== updatedBug.creatorId) {
       throw new Forbidden('You did not create this bug.')
     }
-    const afterUpdate = await dbContext.Bug.findByIdAndUpdate(updatedBug.id, updatedBug, { new: true, runValidators: true })
+    const afterUpdate = await dbContext.Bug.findByIdAndUpdate(updatedBug.id, updatedBug, { new: true, runValidators: true }).populate('creator')
     return afterUpdate
   }
 
