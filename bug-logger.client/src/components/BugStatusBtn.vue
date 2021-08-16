@@ -25,5 +25,9 @@ export default {
 </script>
 
 <style scoped>
-
+.btn-success:hover{
+  color: white;
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
 </style>
