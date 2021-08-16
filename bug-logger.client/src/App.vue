@@ -29,6 +29,9 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 .creator-picture{
-
+  border-radius: 50%;
+  object-fit: cover;
+  width: 6rem;
+  height: 6rem;
 }
 </style>

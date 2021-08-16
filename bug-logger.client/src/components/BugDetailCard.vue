@@ -1,10 +1,10 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h2>
+      <h2 class="bug-title">
         <!-- TODO: Close and Edit should be disabled for non-creator -->
         {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug" />
-        <i class="mdi mdi-pencil btn btn-yellow float-right" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
+        <i class="mdi mdi-pencil btn btn-yellow float-md-right" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
       </h2>
     </div>
     <div class="card-body">
@@ -16,7 +16,7 @@
                       cols="100"
                       rows="5"
                       class="col-10"
-                      v-model="state.editedBug.description"
+                      v-model="state.editedBug.newDescription"
             ></textarea>
             <button type="submit" class="btn btn-secondary col-2">
               SUBMIT
@@ -26,12 +26,12 @@
       </div>
       <div v-else>
         <!-- TODO: Fix bug description to show up correctly especially after being edited. -->
-        <p>{{ bug.description }}</p>
+        <h4>{{ bug.description }}</h4>
       </div>
     </div>
-    <div class="card-footer">
-      <img :src="bug.creator.picture" :alt="bug.creator.name">
-      {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
+    <div class="card-footer text-muted align-items-end d-flex">
+      <img :src="bug.creator.picture" :alt="bug.creator.name" :title="bug.creator.name" class="creator-picture img-fluid mr-3">
+      Submitted bya: {{ bug.creator.name || 'No Creator' }} | Created: {{ created }} | Last Update: {{ lastUpdated }}
     </div>
   </div>
 </template>
@@ -52,7 +52,8 @@ export default {
     const state = reactive({
       editOn: false,
       editedBug: {
-        description: props.bug.description
+        description: computed(() => AppState.chosenBug.description),
+        newDescription: ''
       }
     })
     return {
@@ -64,7 +65,7 @@ export default {
         }
       },
       async closeBug() {
-        if (AppState.account.id === props.bug.id) {
+        if (AppState.account.id === props.bug.creator.id) {
           if (!props.bug.closed) {
             if (await Pop.confirm('Are you sure you want to close this bug?', undefined, undefined, 'Yes, close it.')) {
               await bugsService.close(props.bug)
@@ -98,5 +99,14 @@ export default {
 
 .btn-success{
   cursor: context-menu !important;
+}
+
+.creator-picture{
+  max-height: 5vh;
+  max-width: 5vh;
+}
+
+.bug-title{
+  font-weight: 600;
 }
 </style>

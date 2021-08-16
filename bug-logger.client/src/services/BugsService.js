@@ -42,6 +42,8 @@ class BugsService {
     if (AppState.user.isAuthenticated && AppState.account.id === oldBug.creator.id) {
       try {
         const res = await api.put('api/bugs/' + oldBug.id, newBug)
+        console.log('updated bug:', res.data)
+        AppState.chosenBug = res.data
         Pop.toast('Bug edited', 'success')
       } catch (error) {
         Pop.toast(error)

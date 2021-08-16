@@ -2,7 +2,7 @@
   <div class="card mb-3">
     <div class="row g-0 align-items-center">
       <div class="col-3 text-center">
-        <img :src="note.creator.picture" class="img-fluid rounded" :alt="note.creator.name">
+        <img :src="note.creator.picture" class="mx-2 creator-picture" :alt="note.creator.name" :title="note.creator.name">
       </div>
       <div class="col-7">
         <div class="card-body">

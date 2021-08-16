@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-around">
+  <div class="row justify-content-around py-3">
     <div class="col-md-10">
       <BugDetailCard v-if="bug.id" :bug="bug" />
     </div>
