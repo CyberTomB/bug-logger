@@ -3,7 +3,7 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>
-          BUG LOGGER
+          BUGSVILLE
         </h2>
       </div>
     </router-link>
@@ -20,7 +20,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li v-if="account.id" class="nav-item">
           <router-link :to="{ name: 'Bugs List' }" class="nav-link">
             Home
           </router-link>
@@ -83,6 +83,7 @@ export default {
     return {
       state,
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup()
       },
