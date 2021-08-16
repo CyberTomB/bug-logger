@@ -2,6 +2,7 @@
   <div class="card">
     <div class="card-header">
       <h2>
+        <!-- TODO: Close and Edit should be disabled for non-creator -->
         {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug" />
         <i class="mdi mdi-pencil btn btn-yellow float-right" v-if="!bug.closed" @click="edit">EDIT</i>
       </h2>
@@ -24,7 +25,8 @@
         </form>
       </div>
       <div v-else>
-        <p>{{ state.editedBug.description }}</p>
+        <!-- TODO: Fix bug description to show up correctly especially after being edited. -->
+        <p>{{ bug.description }}</p>
       </div>
     </div>
     <div class="card-footer">

@@ -48,3 +48,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* "Disabled" the hover effect in order to keep the btn shape and color */
+.btn-warning:hover{
+  color: black;
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+
+.btn-success:hover{
+  color: white;
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+</style>
