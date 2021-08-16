@@ -3,12 +3,18 @@
   <div class="row justify-content-around">
     <div class="col-md-10">
       <div class="row justify-content-end py-3">
-        <div class="col-6">
+        <div class="col-md-6">
           <h2>Bugs Reported:</h2>
         </div>
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-md-6 d-flex justify-content-md-end">
           <!-- Bug Create Modal: -->
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createBugReport" title="Create Bug Report">
+          <button type="button"
+                  class="btn btn-info"
+                  data-toggle="modal"
+                  data-target="#createBugReport"
+                  title="Create Bug Report"
+                  id="create-bug-btn"
+          >
             Create Bug Report
           </button>
         </div>
@@ -98,3 +104,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

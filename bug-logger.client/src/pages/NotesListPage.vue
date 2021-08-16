@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-around">
-    <div class="card-body border-top col-8">
+    <div class="card-body border-top col-md-8">
       <form class="row" @submit.prevent="createNote">
         <small>Add Note:</small>
         <div class="input-group">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row justify-content-around">
-    <div class="col-10">
+    <div class="col-md-10">
       <h1>Notes List</h1>
       <NoteCard v-for="note in notes" :key="note.id" :note="note">
       </NoteCard>

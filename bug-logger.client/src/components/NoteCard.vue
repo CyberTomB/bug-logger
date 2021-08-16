@@ -1,10 +1,10 @@
 <template>
   <div class="card mb-3">
     <div class="row g-0 align-items-center">
-      <div class="col-md-3 text-center">
-        <img :src="note.creator.picture" class="img-fluid rounded-start" :alt="note.creator.name">
+      <div class="col-3 text-center">
+        <img :src="note.creator.picture" class="img-fluid rounded" :alt="note.creator.name">
       </div>
-      <div class="col-md-7">
+      <div class="col-7">
         <div class="card-body">
           <small class="card-title">
             {{ note.creator.name }}
@@ -17,7 +17,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-2">
         <i v-if="account.id === note.creator.id" class="btn mdi mdi-delete btn-danger" title="Delete Note" @click="deleteNote"></i>
       </div>
     </div>
