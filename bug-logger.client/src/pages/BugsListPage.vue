@@ -30,8 +30,11 @@
         <h3 class="col-3" @click="updateOrder()">
           Last Updated
         </h3>
-        <h3 class="col" @click="openFilter">
-          {{ state.openBugsOnly ? 'Open Only' : 'All Bugs' }}
+        <h3 class="col">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="state.openBugsOnly">
+            <label class="custom-control-label" for="customSwitch1">{{ state.openBugsOnly ? 'Open Only' : 'All Bugs' }}</label>
+          </div>
         </h3>
       </div>
       <div v-if="state.openBugsOnly">
