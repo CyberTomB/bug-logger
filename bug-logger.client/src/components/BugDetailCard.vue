@@ -3,7 +3,9 @@
     <div class="card-header">
       <h2 class="bug-title">
         <!-- TODO: Close and Edit should be disabled for non-creator -->
-        {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug" />
+        {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug">
+          Close Bug?
+        </BugStatusBtn>
         <i class="mdi mdi-pencil btn btn-yellow float-md-right" title="Edit" aria-label="Edit" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
       </h2>
     </div>
@@ -97,6 +99,9 @@ export default {
 <style scoped>
 .btn-yellow{
   background-color: rgb(220, 224, 7);
+}
+.btn-yellow:hover{
+  background-color: rgb(243, 245, 111)
 }
 
 .btn-success{

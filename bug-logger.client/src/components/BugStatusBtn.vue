@@ -1,5 +1,11 @@
 <template>
-  <i class="mx-2 mdi btn" :class="[bugStatus ? state.closedClass : state.openClass]" :title="bugStatus? 'Closed' : 'Open'" @click="$emit('close')">
+  <i class="mx-2 mdi btn"
+     :class="[bugStatus ? state.closedClass : state.openClass]"
+     :title="bugStatus? 'Closed' : 'Open'"
+     @click="$emit('close')"
+     @mouseover="state.hover = true"
+     @mouseleave="state.hover = false"
+  ><slot v-if="state.hover && !bugStatus"></slot>
   </i>
 </template>
 
@@ -14,6 +20,7 @@ export default {
   },
   setup(props) {
     const state = reactive({
+      hover: false,
       openClass: 'btn-warning mdi-progress-check',
       closedClass: 'btn-success mdi-checkbox-marked-circle'
     })

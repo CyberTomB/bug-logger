@@ -17,4 +17,4 @@
 * [X] The Client and Server enforce all above independently
 * [X] Changes to data do not require refresh to render
 * [X] Api passes all Postman Tests
-* [] Application UI adheres to Phase I, Phase II and Phase III of the CodeWorks Design Requirements
+* [X] Application UI adheres to Phase I, Phase II and Phase III of the CodeWorks Design Requirements
