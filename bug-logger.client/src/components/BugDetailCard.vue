@@ -4,7 +4,7 @@
       <h2 class="bug-title">
         <!-- TODO: Close and Edit should be disabled for non-creator -->
         {{ bug.title }} <BugStatusBtn :bug-status="bug.closed" @close="closeBug">
-          Close Bug?
+          {{ bug.creator.id === account.id ? 'Close Bug?' : null }}
         </BugStatusBtn>
         <i class="mdi mdi-pencil btn btn-yellow float-md-right" title="Edit" aria-label="Edit" v-if="!bug.closed && account.id === bug.creator.id" @click="edit">EDIT</i>
       </h2>
@@ -75,7 +75,7 @@ export default {
               await bugsService.close(props.bug)
             }
           }
-        } else {
+        } else if (!props.bug.closed) {
           Pop.toast('Only the creator can close their bugs.')
         }
       },

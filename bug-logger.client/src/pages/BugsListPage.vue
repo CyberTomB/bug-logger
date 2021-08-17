@@ -33,7 +33,7 @@
         <h3 class="col">
           <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="customSwitch1" v-model="state.openBugsOnly">
-            <label class="custom-control-label" for="customSwitch1">{{ state.openBugsOnly ? 'Open Only' : 'All Bugs' }}</label>
+            <label class="custom-control-label action" for="customSwitch1" :title="state.openBugsOnly ? 'Show All Bugs' : 'Show Open Bugs Only'">{{ state.openBugsOnly ? 'Open Only' : 'All Bugs' }}</label>
           </div>
         </h3>
       </div>

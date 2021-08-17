@@ -34,4 +34,7 @@ export default {
   width: 6rem;
   height: 6rem;
 }
+.action{
+  cursor: pointer;
+}
 </style>

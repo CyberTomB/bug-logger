@@ -1,8 +1,18 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="row justify-content-center py-4">
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-header">
+        <img :src="account.picture" class="creator-picture" :alt="account.picture" :title="account.name">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ account.name }}
+        </h5>
+        <router-link :to="{name: 'Bugs List'}" class="btn btn-primary" title="Bugs List">
+          BUGS
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,7 +30,7 @@ export default {
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
+.creator-picture{
+
 }
 </style>
