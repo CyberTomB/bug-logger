@@ -7,7 +7,8 @@
           <h2>Bugs Reported:</h2>
         </div>
         <div class="col-md-6 d-flex justify-content-md-end">
-          <!-- Bug Create Modal: -->
+          <!-- Opens Bug Create Modal: -->
+          <!-- TODO: Disable unless user is logged in -->
           <button type="button"
                   class="btn btn-info"
                   data-toggle="modal"

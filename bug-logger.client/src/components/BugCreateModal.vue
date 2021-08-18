@@ -17,6 +17,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- TODO: Form validation (needs required fields) -->
         <form @submit.prevent="createBug">
           <div class="modal-body">
             <div class="form-group">
